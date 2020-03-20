@@ -1,4 +1,4 @@
-package JUC;
+package JUC.JUC1;
 
 /**
  * @author ：ZouJiaHui
