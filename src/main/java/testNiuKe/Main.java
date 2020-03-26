@@ -1,4 +1,4 @@
-package JUC.testNiuKe;
+package testNiuKe;
 
 import java.util.ArrayList;
 import java.util.List;

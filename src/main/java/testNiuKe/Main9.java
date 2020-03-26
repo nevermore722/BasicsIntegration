@@ -1,4 +1,4 @@
-package JUC.testNiuKe;
+package testNiuKe;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
