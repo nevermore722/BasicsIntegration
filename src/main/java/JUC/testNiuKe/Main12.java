@@ -28,9 +28,10 @@ import java.util.Scanner;
 public class Main12 {
 
   public static void main(String[] args) {
+    //对代码稍作修改
     Scanner scanner = new Scanner(System.in);
-    if (scanner.hasNextLine()) {
-      String nextLine = scanner.nextLine();
+    if (scanner.hasNextInt()) {
+      String nextLine = (String.valueOf(scanner.nextInt())) ;
       char[] chars = nextLine.toCharArray();
       for (int i = chars.length - 1; i >= 0; i--) {
         System.out.print(chars[i]);
