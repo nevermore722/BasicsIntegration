@@ -7,6 +7,13 @@
   <groupId>com.zjh</groupId>
   <artifactId>JUC</artifactId>
   <version>1.0-SNAPSHOT</version>
-
+  <dependencies>
+    <!-- 2020_3_29引入Junit5 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.5.2</version>
+    </dependency>
+  </dependencies>
 
 </project>
