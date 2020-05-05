@@ -29,22 +29,24 @@ package leetcodePractice;
  */
 public class Test110 {
 
+  boolean res = true;
+
   public boolean isBalanced(TreeNode root) {
-    if (root == null) {
-      return true;
-    }
-    if (Math.abs(check(root.left) - check(root.right)) > 1) {
-      return false;
-    }
-    return isBalanced(root.right) && isBalanced(root.right);
+
+    helper(root);
+    return res;
 
   }
 
-  public int check(TreeNode root) {
+  private int helper(TreeNode root) {
     if (root == null) {
       return 0;
     }
-    int longest = Math.max(check(root.left), check(root.right)) + 1;
-    return longest;
+    int left = helper(root.left) + 1;
+    int right = helper(root.right) + 1;
+    if (Math.abs(right - left) > 1) {
+      res = false;
+    }
+    return Math.max(left, right);
   }
 }
