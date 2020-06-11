@@ -24,24 +24,23 @@ package leetcodePractice;
  */
 public class Test202 {
 
-  public boolean isHappy(int n) {
-    int slow = n, fast = create(n);
-    while (fast != 1) {
-      if (fast == slow) {
-        return false;
-      }
-      fast = create(create(fast));
-      slow = create(slow);
-    }
-    return true;
-  }
-
-  private int create(int n) {
+  public int squareSum(int n) {
     int sum = 0;
-    while (n != 0) {
-      sum += n % 10 + (n % 10);
+    while (n > 0) {
+      int digit = n % 10;
+      sum += digit * digit;
       n /= 10;
     }
     return sum;
   }
+
+  public boolean isHappy(int n) {
+    int slow = n, fast = squareSum(n);
+    while (slow != fast) {
+      slow = squareSum(slow);
+      fast = squareSum(squareSum(fast));
+    }
+    return slow == 1;
+  }
+
 }
