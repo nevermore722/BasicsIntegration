@@ -41,6 +41,8 @@ public class Test217 {
     for (int x : nums) {
       if (set.contains(x)) {
         return true;
+      } else {
+        set.add(x);
       }
     }
     return false;
