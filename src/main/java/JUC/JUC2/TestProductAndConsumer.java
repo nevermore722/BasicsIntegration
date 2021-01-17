@@ -20,9 +20,9 @@ public class TestProductAndConsumer {
     Consumer cus = new Consumer(clerk);
 
     new Thread(pro, "生产者A").start();
-    new Thread(cus, "消费者B").start();
+    new Thread(pro, "生产者B").start();
 
-    new Thread(pro, "生产者C").start();
+    new Thread(cus, "消费者C").start();
     new Thread(cus, "消费者D").start();
   }
 
@@ -34,8 +34,9 @@ class Clerk {
   private int product = 0;
 
   //进货
-  public synchronized void get() {//循环次数2
-    while (product >= 1) {//为了避免虚假唤醒问题，应该总是使用 在循环中
+  public synchronized void get() {
+    //使用while判断当前product数量，防止虚假唤醒
+    while (product >= 3) {
       System.out.println("产品已满！");
       try {
         this.wait();
@@ -61,8 +62,6 @@ class Clerk {
     }
     System.out.println(Thread.currentThread().getName() + " : " + --product);
     this.notifyAll();
-
-
   }
 }
 
@@ -101,6 +100,11 @@ class Consumer implements Runnable {
   @Override
   public void run() {
     for (int i = 0; i < 20; i++) {
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
       clerk.sale();
     }
   }
